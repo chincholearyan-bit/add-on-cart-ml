@@ -7,7 +7,6 @@ np.random.seed(42)
 
 n_users = 3000
 
-# cities = ["Mumbai", "Pune", "Delhi","Nagpur"]
 
 users_df = pd.DataFrame({
   "user_id": range(1, n_users+1),
@@ -47,8 +46,6 @@ drink_items = ["Coke","Pepsi","Lassi","Cold Coffee","Buttermilk"]
 dessert_items = ["Gulab Jamun","RasMalai","Rasgulla","Jalebi","Ice Cream"]
 side_items = ["Raita","Salad","Roasted Papad"]
 
-
-# categories = ["main", "drinks", "dessert", "sides"]
 
 items_list = []
 item_id = 1
@@ -107,22 +104,6 @@ items_df = pd.DataFrame(items_list, columns=[
     "item_id", "rest_id", "item_name",
     "category", "food_type", "price", "veg_flag"
   ])
-  # for cat in categories:
-#     for i in range(5):
-#       price = np.random.uniform(100,500) if cat=="main" else np.random.uniform(50,200)
-
-#       items_list.append([
-#         item_id,
-#         row["rest_id"],
-#         f"{cat}_item_{i}_{row['rest_id']}",
-#         cat,
-#         round(price,2),
-#         np.random.choice([0,1],p=[0.4,0.6])
-#       ])
-#       item_id +=1
-# items_df = pd.DataFrame(items_list, columns=[
-#   "item_id","rest_id","item_name","category","price","veg_flag"
-# ])
 
 n_orders = 20000
 
@@ -154,7 +135,7 @@ order_df = pd.DataFrame(orders_list, columns=[
 order_items_list = []
 
 for _, order in order_df.iterrows():
-  # user = users_df[users_df.user_id==order.user_id].iloc[0]
+
   rest_items = items_df[items_df.rest_id==order.rest_id]
 
   main_item = rest_items[rest_items.category=="main"].sample(1)

@@ -148,10 +148,7 @@ def suggest_addon(user_input_dict, rest_id, main_food_type_input):
   for cat, prob in sorted_categories:
     print(f"{cat}: {round(prob, 3)}")
 
-  # top_categories = [
-  #   cat for cat, prob in sorted_categories
-  #   if cat != "none"
-  # ][:2]
+
 
   filtered_categories = [
     cat for cat, prob in sorted_categories
@@ -168,8 +165,6 @@ def suggest_addon(user_input_dict, rest_id, main_food_type_input):
     print("\nBussiness Rule: Prioritizing Raita & Drinks")
     priority = ["sides", "drinks", "dessert"]
 
-  # else:
-  #   priority = []
 
   final_categories = priority + [
   cat for cat in filtered_categories
@@ -181,10 +176,6 @@ def suggest_addon(user_input_dict, rest_id, main_food_type_input):
  
   for category in final_categories:
 
-    # items_in_category = items[
-    #   (items["rest_id"] == rest_id)&
-    #   (items["category"] == category)
-    # ]
     if category == "carbs":
       items_in_category = items[
         (items["rest_id"] == rest_id) &
